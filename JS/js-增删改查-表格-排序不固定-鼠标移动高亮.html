@@ -1,0 +1,98 @@
+﻿
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=gbk"/>   
+  <script type="text/javascript">  
+	 window.onload = function(){
+		Highlight();
+		stuno();
+	 } 
+	 function stuno()
+	 	{	var tbody = document.getElementById('table').lastChild; 
+	 		var num=tbody.getElementsByTagName("tr").length;
+	 		
+	 		for(var x=1;x<num;x++)
+	 		{
+	 			var tr = tbody.getElementsByTagName("tr");
+	 			var input=tr[x].getElementsByTagName("input")[0];
+	 			input.value=x;
+	 		}
+	 	}
+	function addOne(){ 
+	    var tbody = document.getElementById('table').lastChild;  
+		var tr = document.createElement('tr');  
+		/*学号一旦输入，删除后结果不变*/
+		/*if(tbody.getElementsByTagName("tr")[tbody.getElementsByTagName("tr").length-1].getElementsByTagName("input")[0]==undefined){
+			var num_temp=0;
+		}
+		else
+		{
+			var num_temp=tbody.getElementsByTagName("tr")[tbody.getElementsByTagName("tr").length-1].getElementsByTagName("input")[0].value;
+		}*/
+		
+		var td = document.createElement("td");
+		 td.innerHTML = "<input type='text' value= '' /> ";
+		 tr.appendChild(td);
+		 //num_temp++;
+		 //td.childNodes[0].value=num_temp;
+
+		 td = document.createElement("td");	 
+		 td.innerHTML = "<input type='text'/>";
+		 tr.appendChild(td);
+		 
+		 td = document.createElement("td");	
+		 td.innerHTML = "<p onclick='deleteRow(this)'>删除</p>";
+		 tr.appendChild(td);
+		 tbody.appendChild(tr);
+		 stuno();
+		Highlight();
+   	 }
+
+	 function deleteRow(x){
+	    var table = document.getElementById('table');
+	    var tbody=table.lastChild;
+		var tr = x.parentNode.parentNode;
+		 tbody.removeChild(tr);
+		stuno();
+	 }
+ function Highlight(){
+		var tbody = document.getElementById('table').lastChild;	
+		trs = tbody.getElementsByTagName('tr');   
+		for(var i =1;i<trs.length;i++){
+			trs[i].onmouseover = function(){
+				this.style.backgroundColor ="#f2f2f2";
+			} 
+			trs[i].onmouseout = function(){
+				this.style.backgroundColor ="#fff";
+			} 
+		}  
+	 }
+
+  </script> 
+ </head> 
+ <body> 
+	   <table border="1" width="50%" id="table">
+	   <tr>
+		<th>学号</th>
+		<th>姓名</th>
+		<th>操作</th>
+	   </tr>  
+		<!--
+	   <tr>
+		<td><input type='text' value=""/></td>
+		<td><input type='text' value="王小明"/></td>
+		<td><p onclick="deleteRow(this)">删除</p></td>
+	   </tr>
+
+	   <tr>
+		<td><input type='text' value=""/></td>
+		<td><input type='text' value="刘小芳"/></td>
+		<td><p onclick="deleteRow(this)">删除</p></td>
+	   </tr>  
+	   -->
+	   </table>
+	   <input type="button" value="添加一行" onclick="addOne()" />
+ </body>
+</html>
