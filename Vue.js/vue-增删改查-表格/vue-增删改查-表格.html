@@ -46,17 +46,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="person in people">
+                <tr v-for="(person,indextemp) in people">
                     <td>{{ person.name }}</td>
                     <td>{{ person.age }}</td>
                     <td>{{ person.sex }}</td>
-                    <td :class="'text-center'"><button @click="deletePerson($index)">Delete</button></td>
+                    <td :class="'text-center'"><button @click="deletePerson(indextemp)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
         </div>
     </body>
-    <script src="vue.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script>
         var vm = new Vue({
             el: '#app',
