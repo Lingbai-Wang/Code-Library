@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js-选项卡</title>
+    <style media="screen" type="text/css">
+        *{
+            padding:0px;
+            margin:0px;
+            font: 12px "Microsoft YaHei";
+        }
+        .tabs{
+            width:290px;
+        }
+        .tabs ul{
+            list-style: none;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+        }
+        .tabs ul li{
+            cursor: pointer;
+            float:left;
+            list-style: none;
+            height: 28px;
+            line-height: 28px;
+            margin-right:3px;
+            border:1px red solid;
+            width: 60px;
+            text-align: center;
+            position:relative;
+        	z-index:1;
+        }
+        .tabs ul .active-top{
+            border:1px red solid;
+            border-bottom: 1px #FFF solid;
+        }
+        .tabs div{
+            display: none;
+        }
+        .tabs .active-bottom{
+            display: block;
+            border:1px red solid;
+            margin-top: -1px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var tabs=document.getElementsByClassName('tabs')[0];
+            var tabs_ul=tabs.getElementsByTagName("ul")[0];
+            var tabs_lis=tabs_ul.getElementsByTagName("li");
+            var tabs_divs=tabs.getElementsByTagName("div");
+            for(var i=0;i<tabs_lis.length;i++){
+                tabs_lis[i].temp=i;
+                tabs_lis[i].onclick=function(){
+                    for(var n=0;n<tabs_lis.length;n++){
+                        tabs_lis[n].className="";
+                        tabs_divs[n].className="";
+                    }
+                    this.className="active-top";
+                    tabs_divs[this.temp].className="active-bottom";
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="tabs">
+        <ul>
+            <li class="active-top">选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+            <li>选项4</li>
+        </ul>
+        <div class="active-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae porro quo animi alias fugit, incidunt veritatis facere voluptates nihil tempora, maxime, sequi molestias ullam earum possimus et perspiciatis commodi blanditiis?</div>
+        <div>Facere aspernatur numquam voluptatibus aut explicabo, quisquam, doloremque deserunt fuga praesentium, impedit facilis quaerat obcaecati voluptate dolorem minus sint libero nostrum necessitatibus rem assumenda. Necessitatibus laborum impedit, accusantium cupiditate provident.</div>
+        <div>Perspiciatis natus necessitatibus tempore dicta eveniet fuga ea aspernatur pariatur. Laboriosam fuga nostrum dolorum quas, eaque ipsam ipsa dicta quam natus, dolorem labore excepturi perspiciatis eius? Itaque officia delectus similique.</div>
+        <div>Sequi ab adipisci vitae magni voluptates fugit optio voluptatibus, ipsam commodi deleniti, itaque blanditiis nesciunt. Repellat sunt laborum id quis nam fugit alias, possimus ad aliquid. Tempore quod, provident alias.</div>
+    </div>
+</body>
+</html>
