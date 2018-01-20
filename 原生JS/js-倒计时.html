@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-倒计时</title>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			function countdown(){
+
+				var now = new Date();
+				var future = new Date(2018,0,20,10,44,0,0);
+				var interval = future - now;
+				var day = parseInt(interval / 1000 / 60 / 60 / 24, 10);
+				var hour = parseInt(interval / 1000 / 60 / 60 % 24, 10);
+				var minute = parseInt(interval / 1000 / 60 % 60, 10);
+				var second = parseInt(interval / 1000 % 60, 10);
+				var millisecond = parseInt(interval % 1000, 10);
+
+				day = format(day);
+				hour = format(hour);
+				minute = format(minute);
+				second = format(second);
+				millisecond = msFormat(millisecond);
+
+				if(interval < 0){
+					window.clearInterval(temp1);
+					var temp2 = setInterval(time,1);
+				}else{
+					document.getElementById("test").innerHTML = day+"天"+hour+"时"+minute+"分"+second+"秒"+millisecond+"毫秒";
+				}
+
+			}
+
+			function time(){
+
+				var weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+
+				var now = new Date();
+				var year = now.getFullYear();
+				var month = now.getMonth() + 1;
+				var date = now.getDate();
+				var day = weekday[now.getDay()];
+				var hour = now.getHours();
+				var minute = now.getMinutes();
+				var second = now.getSeconds();
+				var millisecond = now.getMilliseconds();
+
+				month = format(month);
+				date = format(date);
+				hour = format(hour);
+				minute = format(minute);
+				second = format(second);
+				millisecond = msFormat(millisecond);
+
+				document.getElementById("test").innerHTML = year+"-"+month+"-"+date+" "+day+" "+hour+":"+minute+":"+second+":"+millisecond;
+
+			}
+
+			function format(i){
+				if (i <= 9 && i >= 0) {
+					i = "0" + i;
+				}
+				return i;
+			}
+
+			function msFormat(i){
+				if(i <= 9){
+					i = "00" + i;
+				}else if(i <= 99){
+					i = "0" + i;
+				}
+				return i;
+			}
+			
+			var temp1 = setInterval(countdown,1);
+
+		};
+	</script>
+</head>
+<body>
+	<div id="test"></div>
+</body>
+</html>
