@@ -8,7 +8,7 @@
 
 			function countdown(e){
 				var now = new Date();
-				var future = new Date(2018,0,21,16,59,0,0);
+				var future = new Date(2018,1,16,0,0,0,0);
 				var interval = future - now;
 				var day = parseInt(interval / 1000 / 60 / 60 / 24, 10);
 				var hour = parseInt(interval / 1000 / 60 / 60 % 24, 10);
@@ -22,12 +22,12 @@
 				second = format2(second);
 				millisecond = format3(millisecond);
 
-				document.getElementById(e).innerHTML = day+"天"+hour+"时"+minute+"分"+second+"秒"+millisecond+"毫秒";
+				document.getElementById(e).innerHTML = day+" "+hour+":"+minute+":"+second+":"+millisecond;
 
 				if(interval <= 0){
 					window.clearInterval(temp1);
 					/*由于机器运算速度达不到精度，因此手动归零，大概会有3毫秒的延迟*/
-					document.getElementById(e).innerHTML = "0"+"天"+"00"+"时"+"00"+"分"+"00"+"秒"+"000"+"毫秒";
+					document.getElementById(e).innerHTML = "0"+" "+"00"+":"+"00"+":"+"00"+":"+"000";
 					/*以下三行代码作用是：倒计时归零后，将正常时间覆盖到已归零的倒计时上，如不需要此功能，可移除*/
 					// var temp2 = setInterval(function(){
 					// 	time(e);
