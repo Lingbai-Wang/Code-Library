@@ -36,14 +36,16 @@
 			}
 
 			function time(e){
-				var weekday1 = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
-				var weekday2 = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+				var month1 = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+				var month2 = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+				var day1 = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
+				var day2 = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 
 				var now = new Date();
 				var year = now.getFullYear();
 				var month = now.getMonth() + 1;
 				var date = now.getDate();
-				var day = weekday1[now.getDay()];
+				var day = day1[now.getDay()];
 				var hour = now.getHours();
 				var minute = now.getMinutes();
 				var second = now.getSeconds();
